@@ -4,7 +4,6 @@ import './ProjectsGrid.css';
 const ProjectsGrid = ({ projects }) => {
   return (
     <section className='projects-section'>
-      {/* <h2>Projects</h2> */}
       <div className='projects-grid'>
         {projects.map((project) => (
           <div key={project.id} className='project-card'>

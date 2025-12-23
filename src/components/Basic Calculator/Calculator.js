@@ -4,7 +4,7 @@ import './Calculator.css'
 
 const Calculator = () => {
   const navigate = useNavigate()
-  const calculatorRef = useRef<HTMLDivElement>(null);
+  const calculatorRef = useRef(null);
   const [exp, setExp] = useState('');
   const [res, setRes] = useState(0);
   const [err, setErr] = useState('');
