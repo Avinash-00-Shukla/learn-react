@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './ProjectsGrid.css';
 
-const ProjectsGrid = ({ projects }: { projects: any[] }) => {
+const ProjectsGrid = ({ projects }) => {
   return (
     <section className='projects-section'>
       {/* <h2>Projects</h2> */}
@@ -11,7 +11,7 @@ const ProjectsGrid = ({ projects }: { projects: any[] }) => {
             <h3>{project.name}</h3>
             <p>{project.description}</p>
             <div className='tech-stack'>
-              {project.tech.map((tech: string , idx: number) => (
+              {project.tech.map((tech, idx) => (
                 <span key={idx} className='tech-badge'>{tech}</span>
               ))}
             </div>

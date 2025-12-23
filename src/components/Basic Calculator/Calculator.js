@@ -10,7 +10,7 @@ const Calculator = () => {
   const [err, setErr] = useState('');
   const [lastWasResult, setLastWasResult] = useState(false);
 
-  const appendExp = (value: string) => {
+  const appendExp = (value) => {
     if (err.length > 0) {
       setErr('');
     }
@@ -27,7 +27,7 @@ const Calculator = () => {
     setExp((e) => e + value);
   };
 
-  const appendOperator = (operator: string) => {
+  const appendOperator = (operator) => {
     if (err.length > 0) {
       setErr('');
     }
@@ -140,7 +140,7 @@ const Calculator = () => {
   };
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
       e.preventDefault();
       if (/[0-9]/.test(e.key)) {
         appendExp(e.key);

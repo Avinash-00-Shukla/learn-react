@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Calculator from './components/Basic Calculator/Calculator.tsx';
-import WeatherDashboard from './components/Weather Dashboard/WeatherDashboard.tsx';
-import ProjectsGrid from './components/Projects Grid/ProjectsGrid.tsx';
+import Calculator from './components/Basic Calculator/Calculator.js';
+import WeatherDashboard from './components/Weather Dashboard/WeatherDashboard.js';
+import ProjectsGrid from './components/Projects Grid/ProjectsGrid.js';
 import ReactLogo from './assets/react.svg';
 import './App.css';
 
