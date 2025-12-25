@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './Calculator.css'
 
 const Calculator = () => {
   const navigate = useNavigate()
@@ -162,46 +161,57 @@ const Calculator = () => {
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [appendExp, appendOperator, appendDecimal, calculate, clear]);
-
+  
   return (
-    <div className='calculator' ref={calculatorRef} tabIndex={0}>
-      <div className='main-container'>
-        <div className={(err.length === 0) ? 'title' : 'Error'}>
-          <button onClick={() => navigate('/')} className='back-btn'>
-            ← Back to Projects
-          </button>
-          {(err.length === 0) ? 'Avinash\'s Calculator' : err}
+    <div
+      ref={calculatorRef}
+      tabIndex={0}
+      className="w-screen min-h-screen flex items-center justify-center"
+    >
+      <div className="relative w-full max-w-md md:max-w-lg lg:max-w-xl bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-6 md:p-8 shadow-2xl">
+        <button
+          onClick={() => navigate('/')}
+          className="absolute top-4 left-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-3 py-2 rounded-md text-sm font-semibold shadow-md hover:-translate-y-1 transition-transform"
+        >
+          ← Projects
+        </button>
+
+        <div className="text-center">
+          <h2 className={`text-xl md:text-2xl font-bold ${err.length === 0 ? 'text-slate-100' : 'text-red-400'}`}>
+            {err.length === 0 ? "Avinash's Calculator" : err}
+          </h2>
+          <p className="text-sm text-slate-400 mt-1">Keyboard support • Esc to clear • Enter to evaluate</p>
         </div>
-        <div className='display-container'>{exp.length === 0 ? res : exp}</div>
-        <div className='buttons-container'>
-          <div className='btn-row'>
-            <div className='btn btn-clear' onClick={() => clear()}>CLR</div>
-            <div className='btn' onClick={() => prependExp()}>+/-</div>
-            <div className='btn' onClick={() => appendOperator('%')}>%</div>
-            <div className='btn btn-operator' onClick={() => appendOperator('/')}>/</div>
+
+        <div className="mt-6">
+          <div className="w-full h-28 md:h-32 bg-[#0f172a] rounded-lg p-4 text-2xl md:text-4xl font-semibold text-right text-slate-100 shadow-inner flex items-center justify-end overflow-hidden">
+            {exp.length === 0 ? res : exp}
           </div>
-          <div className='btn-row'>
-            <div className='btn' onClick={() => appendExp('7')}>7</div>
-            <div className='btn' onClick={() => appendExp('8')}>8</div>
-            <div className='btn' onClick={() => appendExp('9')}>9</div>
-            <div className='btn btn-operator' onClick={() => appendOperator('*')}>*</div>
-          </div>
-          <div className='btn-row'>
-            <div className='btn' onClick={() => appendExp('4')}>4</div>
-            <div className='btn' onClick={() => appendExp('5')}>5</div>
-            <div className='btn' onClick={() => appendExp('6')}>6</div>
-            <div className='btn btn-operator' onClick={() => appendOperator('-')}>−</div>
-          </div>
-          <div className='btn-row'>
-            <div className='btn' onClick={() => appendExp('1')}>1</div>
-            <div className='btn' onClick={() => appendExp('2')}>2</div>
-            <div className='btn' onClick={() => appendExp('3')}>3</div>
-            <div className='btn btn-operator' onClick={() => appendOperator('+')}>+</div>
-          </div>
-          <div className='btn-row'>
-            <div className='btn btn-span-2' onClick={() => appendExp('0')}>0</div>
-            <div className='btn' onClick={() => appendDecimal()}>.</div>
-            <div className='btn btn-equals' onClick={() => calculate()}>=</div>
+
+          <div className="grid grid-cols-4 gap-4 mt-6">
+            <button onClick={() => clear()} className="col-span-1 bg-gradient-to-br from-red-500 to-red-400 text-white rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">CLR</button>
+            <button onClick={() => prependExp()} className="bg-gradient-to-br from-slate-700 to-slate-600 text-slate-100 rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">+/-</button>
+            <button onClick={() => appendOperator('%')} className="bg-gradient-to-br from-yellow-500 to-yellow-400 text-white rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">%</button>
+            <button onClick={() => appendOperator('/')} className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">/</button>
+
+            <button onClick={() => appendExp('7')} className="bg-gradient-to-br from-slate-700 to-slate-600 text-slate-100 rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">7</button>
+            <button onClick={() => appendExp('8')} className="bg-gradient-to-br from-slate-700 to-slate-600 text-slate-100 rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">8</button>
+            <button onClick={() => appendExp('9')} className="bg-gradient-to-br from-slate-700 to-slate-600 text-slate-100 rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">9</button>
+            <button onClick={() => appendOperator('*')} className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">*</button>
+
+            <button onClick={() => appendExp('4')} className="bg-gradient-to-br from-slate-700 to-slate-600 text-slate-100 rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">4</button>
+            <button onClick={() => appendExp('5')} className="bg-gradient-to-br from-slate-700 to-slate-600 text-slate-100 rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">5</button>
+            <button onClick={() => appendExp('6')} className="bg-gradient-to-br from-slate-700 to-slate-600 text-slate-100 rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">6</button>
+            <button onClick={() => appendOperator('-')} className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">−</button>
+
+            <button onClick={() => appendExp('1')} className="bg-gradient-to-br from-slate-700 to-slate-600 text-slate-100 rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">1</button>
+            <button onClick={() => appendExp('2')} className="bg-gradient-to-br from-slate-700 to-slate-600 text-slate-100 rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">2</button>
+            <button onClick={() => appendExp('3')} className="bg-gradient-to-br from-slate-700 to-slate-600 text-slate-100 rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">3</button>
+            <button onClick={() => appendOperator('+')} className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">+</button>
+
+            <button onClick={() => appendExp('0')} className="col-span-2 bg-gradient-to-br from-slate-700 to-slate-600 text-slate-100 rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">0</button>
+            <button onClick={() => appendDecimal()} className="bg-gradient-to-br from-slate-700 to-slate-600 text-slate-100 rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">.</button>
+            <button onClick={() => calculate()} className="bg-gradient-to-r from-cyan-500 to-blue-400 text-white rounded-lg py-3 text-lg font-semibold shadow hover:-translate-y-1 transition-transform">=</button>
           </div>
         </div>
       </div>

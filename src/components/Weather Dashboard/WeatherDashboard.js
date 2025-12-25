@@ -1,9 +1,10 @@
-import './WeatherDashboard.css'
+import React, { useState, useEffect } from 'react';
 
-const WeatherDashboard = () => {  
+const WeatherDashboard = () => {
+  
   return (
-    <div className='title'>Weather Dashboard</div>
-  )
-}
+    <div>weather-app</div>
+  );
+};
 
 export default WeatherDashboard;
